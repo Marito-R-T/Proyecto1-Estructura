@@ -1,0 +1,18 @@
+digraph G { 
+nodesep=.05; 
+rankdir=LR; 
+node [shape=record,width=.1,height=.1] 
+nodeIndices [label = "<nombre> nombre |<edad> edad  ",height=2.5]; 
+nodenombre [label = "<f0> |<f1> |<f2> |<f3> |<f4>  ",height=2.5]; 
+nodeIndices:nombre -> nodenombre:f2;
+nodenombre1 [label = "<f0> |<f1> Mario|<f2> "];
+nodenombre:f0 -> "nodenombre1":f1;
+nodenombre2 [label = "<f0> |<f1> Juan|<f2> "];
+nodenombre:f4 -> "nodenombre2":f1;
+nodeedad [label = "<f0> |<f1> |<f2> |<f3> |<f4>  ",height=2.5]; 
+nodeIndices:edad -> nodeedad:f2;
+nodeedad2 [label = "<f0> |<f1> 20|<f2> "];
+nodeedad:f0 -> "nodeedad2":f1;
+nodeedad1 [label = "<f0> |<f1> 19|<f2> "];
+nodeedad:f4 -> "nodeedad1":f1;
+}
