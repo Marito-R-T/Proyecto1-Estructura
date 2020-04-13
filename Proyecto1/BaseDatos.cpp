@@ -39,7 +39,7 @@ void BaseDatos::empezarFuncionamiento() {
         std::getline(std::cin, extra);
         if (opcion == "4") {
             string idtabla;
-            cout << "Ingresar Id de la Tabla para ver su Estructura" << endl;
+            cout << endl << "Ingresar Id de la Tabla para ver su Estructura" << endl;
             cin>>idtabla;
             if (this->tabla != NULL) {
                 Tabla *t = this->tabla->verificar(idtabla);
@@ -48,6 +48,28 @@ void BaseDatos::empezarFuncionamiento() {
                 } else {
                     cout << "Tabla No Encontrada" << endl;
                 }
+            }
+        } else if (opcion == "1") {
+            string idtabla;
+            cout << endl << "De que tabla desea Saber el numero  de datos que existen?" << endl;
+            cin>>idtabla;
+            if (this->tabla != NULL) {
+                Tabla *t = this->tabla->verificar(idtabla);
+                if (t != NULL) {
+                    int datos = t->getCantidadDatos(t->getLista());
+                    cout << "El numero de datos en la tabla " << idtabla << " es de: " << datos << endl;
+                } else {
+                    cout << "No existe una tabla con ese id" << endl;
+                }
+            } else {
+                cout << "No existen tablas" << endl;
+            }
+        } else if (opcion == "2") {
+            if (this->tabla != NULL) {
+                int datos = this->tabla->getTotalDatos();
+                cout << endl << "El numero de datos en la base de datos es de: " << datos << endl;
+            } else {
+                cout << endl << "Hay 0 datos ya que no existe ninguna tabla";
             }
         } else {
             opcion += extra;
@@ -165,6 +187,8 @@ void BaseDatos::mostrarOpciones() {
     cout << "------------------------------" << endl;
     cout << "         BASE DE DATOS        " << endl;
     cout << "|____________________________|" << endl;
+    cout << "| 1) Datos de una tabla      |" << endl;
+    cout << "| 2) Total de datos          |" << endl;
     cout << "| 4) VER TABLA               |" << endl;
     cout << "| c) CERRAR                  |" << endl;
     cout << "------------------------------" << endl << endl << endl;

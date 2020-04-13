@@ -60,6 +60,8 @@ public:
     void setLista(Indice *listaindices){
         this->listaindices = listaindices;
     }
+    int getCantidadDatos(Indice *indice);
+    int getTotalDatos();
 private:
     int posicion;
     string id;

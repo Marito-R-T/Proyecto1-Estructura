@@ -123,3 +123,19 @@ Dato *Tabla::obtenerDato(string* s){
         return NULL;
     }
 }
+
+int Tabla::getCantidadDatos(Indice* indice){
+    if(indice!=NULL){
+        return indice->getHash()->getCantidadDatos() + this->getCantidadDatos(indice->getDerecha());
+    }else{
+        return 0;
+    }
+}
+
+int Tabla::getTotalDatos(){
+    if(this->getAbajo()!=NULL){
+        return this->getCantidadDatos(this->listaindices) + this->abajo->getTotalDatos();
+    }else{
+        return this->getCantidadDatos(this->listaindices);
+    }
+}
